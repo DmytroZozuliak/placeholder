@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import AuthenticationForm from '../../components/AuthenticationForm';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { useTypedSelector } from '../../hooks/redux';
-import { signinFields } from '../../utils/constants/formFields';
 import { RoutePath } from '../../utils/constants/routes';
 import styles from './style.module.scss';
 
@@ -23,7 +22,7 @@ const SignInPage = () => {
   return (
     <ErrorBoundary text={t('errors.default')}>
       <Container maxWidth="sm" className={styles.authContainer}>
-        <AuthenticationForm fields={signinFields} />
+        <AuthenticationForm />
       </Container>
     </ErrorBoundary>
   );

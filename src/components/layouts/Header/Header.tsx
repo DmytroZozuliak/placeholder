@@ -66,7 +66,7 @@ const Header = () => {
                 startIcon={<DashboardIcon />}
                 color="inherit"
               >
-                {t(`buttons.boards`)}
+                {t(`buttons.news`)}
               </Button>
               {isLogged && (
                 <Button
@@ -93,7 +93,7 @@ const Header = () => {
                   color="inherit"
                   className={'header-btn'}
                 >
-                  {t('welcome_page.sin_btn')}
+                  {t('buttons.login')}
                 </Button>
               )}
             </Box>

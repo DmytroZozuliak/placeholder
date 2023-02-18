@@ -20,7 +20,7 @@ import { useTypedSelector } from '../../../../hooks/redux';
 const Burger = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const { t } = useTranslation();
-  const { theme } = useTypedSelector((state) => state.settings);
+  const theme = useTypedSelector((state) => state.settings.theme);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (

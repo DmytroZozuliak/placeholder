@@ -5,106 +5,114 @@ import styles from './style.module.scss';
 import { Box } from '@mui/system';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { IFromField, IInitialFormValues } from '../../interfaces/formInterfaces';
+import { FormValues } from '../../interfaces/formInterfaces';
 import { useTypedDispatch } from '../../hooks/redux';
 import { logIn } from '../../store/reducers/userSlice';
 import { useTranslation } from 'react-i18next';
-import { openSuccessSnack } from '../../store/reducers/snackSlice';
+import { openSuccessSnack, openErrorSnack } from '../../store/reducers/snackSlice';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { RoutePath } from '../../utils/constants/routes';
+import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useValidationSchema } from '../../hooks/useValidationSchema';
+import { mockFormData } from '../../utils/constants/auth';
 
-const AuthenticationForm: React.FC<IFromField> = ({ fields }) => {
-  // const [createUser, { isLoading: createUserLoading }] = useCreateUserMutation();
-  // const [signInUser, { isLoading }] = useSignInMutation({
-  //   fixedCacheKey: 'user-data',
-  // });
+const AuthenticationForm = () => {
   const navigate = useNavigate();
   const dispatch = useTypedDispatch();
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
 
-  // const initialValues = fields.reduce<IInitialFormValues>((acc, item) => {
-  //   acc[item] = '';
-  //   return acc;
-  // }, {});
+  const validationSchema = useValidationSchema();
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(validationSchema),
+    defaultValues: {
+      username: '',
+      password: '',
+    },
+  });
 
   const handleClickShowPassword = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('clicked sign in');
-    dispatch(logIn({ name: 'dima' }));
-    navigate(RoutePath.Profile);
+  const onSubmit: SubmitHandler<FormValues> = ({ username, password }) => {
+    if (username !== mockFormData.username || password !== mockFormData.password) {
+      dispatch(openErrorSnack(t('snack_message.failed_user')));
+      return;
+    }
+
+    dispatch(logIn({ name: username }));
+    dispatch(openSuccessSnack(t('snack_message.success_user')));
+    navigate(RoutePath.Profile, { replace: true });
   };
 
   return (
-    <form className={styles.boxWrapper} onSubmit={handleSubmit}>
+    <form className={styles.boxWrapper} onSubmit={handleSubmit(onSubmit)}>
       <Avatar alt="auth-logo" color="primary" className={styles.avatar}>
         <LockOutlinedIcon />
       </Avatar>
       <Typography fontSize={26} variant="h5" className={styles['mr-bot']}>
         {t('forms.auth.title_sin')}
       </Typography>
-      {fields.map((item) => {
-        if (item === 'password') {
-          return (
-            <TextField
-              className={styles.input}
-              classes={{
-                root: styles.label,
-              }}
-              id={item}
-              key={item}
-              name={item}
-              label={t(`forms.auth.${item}`)}
-              autoComplete="on"
-              type={showPassword ? 'text' : 'password'}
-              // value={formik.values[item]}
-              // onChange={formik.handleChange}
-              // error={formik.touched[item] && Boolean(formik.errors[item])}
-              // helperText={formik.touched[item] && formik.errors[item]}
-              InputProps={{
-                endAdornment: (
-                  <IconButton
-                    sx={{ position: 'absolute', right: '12px', top: '8px' }}
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                ),
-              }}
-            />
-          );
-        } else {
-          return (
-            <TextField
-              className={styles.input}
-              classes={{
-                root: styles.label,
-              }}
-              id={item}
-              name={item}
-              label={t(`forms.auth.${item}`)}
-              // value={formik.values[item]}
-              // onChange={formik.handleChange}
-              // error={formik.touched[item] && Boolean(formik.errors[item])}
-              // helperText={formik.touched[item] && formik.errors[item]}
-              key={item}
-            />
-          );
-        }
-      })}
+      <Controller
+        name="username"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.input}
+            classes={{
+              root: styles.label,
+            }}
+            label={t('forms.auth.username')}
+            error={Boolean(errors.username?.message)}
+            helperText={errors.username?.message}
+          />
+        )}
+      />
+      <Controller
+        name="password"
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            className={styles.input}
+            classes={{
+              root: styles.label,
+            }}
+            autoComplete="on"
+            type={showPassword ? 'text' : 'password'}
+            label={t(`forms.auth.password`)}
+            error={Boolean(errors.password?.message)}
+            helperText={errors.password?.message}
+            InputProps={{
+              endAdornment: (
+                <IconButton
+                  sx={{ position: 'absolute', right: '12px', top: '8px' }}
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  edge="end"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              ),
+            }}
+          />
+        )}
+      />
       <Box className={`${styles.boxWrapper} ${styles.buttonsWrapper}`}>
         <LoadingButton
           type="submit"
           className={`${styles.button} ${styles.override}`}
           variant="contained"
         >
-          {t('forms.auth.title_sin')}
+          {t('buttons.submit')}
         </LoadingButton>
       </Box>
     </form>

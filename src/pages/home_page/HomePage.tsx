@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Container, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import styles from './style.module.scss';
 import picture from '../../assets/images/2.png';
@@ -52,11 +52,6 @@ const Home = () => {
           <Container maxWidth="lg" className={styles.container}>
             <Box className={styles['member-wrapper']}>
               <Box className={styles['member']}>
-                <Avatar
-                  src={require(`../../assets/images/${developer.photo}`)}
-                  alt="person avatar"
-                  className={`${styles['member-avatar']} ${styles.override}`}
-                />
                 <Box className={styles['member-info']}>
                   <a target="_blank" href={developer.github} rel="noreferrer">
                     <GitHubIcon

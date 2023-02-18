@@ -2,7 +2,8 @@ import Home from '../../pages/home_page/HomePage';
 import { Navigate } from 'react-router-dom';
 import { IRouterRoutes } from '../../interfaces/baseInterfaces';
 import { SignInPage } from '../../pages/authentication_page';
-import Boards from '../../pages/boards_page';
+import News from '../../pages/news_page';
+import Profile from '../../pages/profile_page';
 
 export enum RoutePath {
   Home = '/',
@@ -20,7 +21,7 @@ const routes: IRouterRoutes = {
     },
     {
       path: RoutePath.News,
-      element: <Boards />,
+      element: <News />,
     },
     {
       path: RoutePath.SignIn,
@@ -34,7 +35,7 @@ const routes: IRouterRoutes = {
   private: [
     {
       path: RoutePath.Profile,
-      element: <Boards />,
+      element: <Profile />,
     },
   ],
 };

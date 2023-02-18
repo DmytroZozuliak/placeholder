@@ -1,8 +1,7 @@
 import { Avatar, IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
-import EditIcon from '@mui/icons-material/Edit';
 import { Box } from '@mui/system';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { stringAvatar } from '../../../../utils/functions';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/redux';
@@ -14,7 +13,7 @@ const AuthLogo = () => {
   const { t } = useTranslation();
   const dispatch = useTypedDispatch();
   const navigate = useNavigate();
-  const { userName, isLogged } = useTypedSelector((state) => state.user);
+  const userName = useTypedSelector((state) => state.user.userName);
 
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
