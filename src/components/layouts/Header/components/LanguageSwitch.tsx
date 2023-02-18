@@ -8,6 +8,7 @@ import { settingsToggleLanguage } from '../../../../store/reducers/settingsSlice
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
   const { language } = useTypedSelector((state) => state.settings);
+  const { t } = useTranslation();
   const dispatch = useTypedDispatch();
 
   const handleToggle = (_: MouseEvent<HTMLElement>, newLang: string) => {
@@ -26,10 +27,10 @@ const LanguageSwitch = () => {
       aria-label="text alignment"
     >
       <ToggleButton value="en" aria-label="left aligned">
-        EN
+        {t('language.en')}
       </ToggleButton>
-      <ToggleButton value="ru" aria-label="centered">
-        RU
+      <ToggleButton value="ua" aria-label="centered">
+        {t('language.ua')}
       </ToggleButton>
     </ToggleButtonGroup>
   );
