@@ -1,7 +1,7 @@
 {
   "name": "news-app",
   "version": "0.1.0",
-  "homepage": "https://dmytrozozuliak.github.io/placeholder",
+  "homepage": "https://dmytrozozuliak.github.io/placeholder/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.9.0",
