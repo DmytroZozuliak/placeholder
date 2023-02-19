@@ -17,7 +17,7 @@ const SignInPage = () => {
     if (isLogged) {
       navigate(RoutePath.News);
     }
-  }, []);
+  }, [isLogged, navigate]);
 
   return (
     <ErrorBoundary text={t('errors.default')}>

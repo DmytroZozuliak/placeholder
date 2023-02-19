@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { stringAvatar } from '../../../../utils/functions';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/redux';
-import { logOut } from '../../../../store/reducers/userSlice';
+import { userActions } from '../../../../store/reducers/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from '../../../../utils/constants/routes';
 
@@ -25,7 +25,7 @@ const AuthLogo = () => {
 
   return (
     <Box sx={{ flexGrow: 0 }}>
-      <Tooltip title={t('header.userSettings')}>
+      <Tooltip title={userName}>
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Avatar>{userName && stringAvatar(userName)}</Avatar>
         </IconButton>
@@ -48,7 +48,7 @@ const AuthLogo = () => {
       >
         <MenuItem
           onClick={() => {
-            dispatch(logOut());
+            dispatch(userActions.logOut());
             navigate(RoutePath.Home);
             handleCloseUserMenu();
           }}

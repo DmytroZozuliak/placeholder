@@ -1,86 +1,41 @@
-import { Box, Button, Container, Typography } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { Box, Stack, Typography } from '@mui/material';
 import styles from './style.module.scss';
 import picture from '../../assets/images/2.png';
-import { developer } from '../../utils/constants/developer';
-import { useTypedSelector } from '../../hooks/redux';
 import { useTranslation } from 'react-i18next';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import ErrorBoundary from '../../components/ErrorBoundary';
-import { RoutePath } from '../../utils/constants/routes';
+import { mockFormData } from '../../utils/constants/auth';
+import { developer } from '../../utils/constants/developer';
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { isLogged } = useTypedSelector((state) => state.user);
   const { t } = useTranslation();
+  const { password, username } = mockFormData;
 
   return (
     <ErrorBoundary text={t('errors.default')}>
       <Box className={styles['welcome-wrapper']}>
-        {!isLogged && (
-          <Box className={styles['btns-wrapper']}>
-            <Button
-              onClick={() => navigate(RoutePath.SignIn)}
-              variant="contained"
-              size="large"
-              className={`${styles.btn} ${styles.override}`}
-            >
-              {t('welcome_page.sin_btn')}
-            </Button>
-          </Box>
-        )}
-        <Typography
-          variant="h1"
-          sx={{
-            '@media (max-width: 800px)': { fontSize: '62px' },
-            '@media (max-width: 550px)': { fontSize: '52px' },
-            '@media (max-width: 440px)': { fontSize: '34px' },
-          }}
-        >
-          Project manager
+        <Typography variant="h3" fontSize={{ xs: 30, sm: 40, md: 50 }}>
+          {t('welcome_page.project')}
         </Typography>
         <Box className={styles['info-wrapper']}>
-          <Typography paragraph fontSize={22} className={styles['info-text']}>
-            {t('welcome_page.about')}
-          </Typography>
+          <Stack>
+            <Typography variant="body2" fontSize={22}>
+              {t('welcome_page.about')}
+            </Typography>
+            <Typography color="warning.main" fontSize={22}>
+              {t('forms.auth.username')} - {username}
+            </Typography>
+            <Typography color="warning.main" fontSize={22}>
+              {t('forms.auth.password')} - {password}
+            </Typography>
+          </Stack>
           <img src={picture} alt="main picture" />
         </Box>
-        <Box>
-          <Typography variant="h2" align="center">
-            {t('welcome_page.team')}
-          </Typography>
-          <Container maxWidth="lg" className={styles.container}>
-            <Box className={styles['member-wrapper']}>
-              <Box className={styles['member']}>
-                <Box className={styles['member-info']}>
-                  <a target="_blank" href={developer.github} rel="noreferrer">
-                    <GitHubIcon
-                      fontSize="large"
-                      sx={{
-                        color: (theme) => theme.typography.body1.color,
-                        '&:hover': {
-                          color: (theme) => theme.palette.primary.main,
-                        },
-                      }}
-                      className={styles.git_logo}
-                    />
-                  </a>
-                  <Typography
-                    variant="h6"
-                    align="center"
-                    fontSize={34}
-                    sx={{ '@media (max-width: 500px)': { fontSize: '26px' } }}
-                  >
-                    {developer.name}
-                  </Typography>
-                  <Typography paragraph align="center" fontSize={18}>
-                    {t(`welcome_page.info`)}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Container>
-        </Box>
+        <Typography mt={3} variant="body1">
+          {t('welcome_page.cv')}
+          <a href={developer.cv} target="_blank" rel="noreferrer">
+            {t('welcome_page.cv_name')}
+          </a>
+        </Typography>
       </Box>
     </ErrorBoundary>
   );

@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-// interface InitialStateInterface {
-//   isLogged: boolean;
-//   userName: string | null;
-// }
+export interface User {
+  isLogged: boolean;
+  userName: string | null;
+}
 
-const initialState = {
+const initialState: User = {
   isLogged: !!localStorage.getItem('userName'),
-  userName: 'admin',
+  userName: null,
 };
 
 const userSlice = createSlice({
@@ -21,12 +21,10 @@ const userSlice = createSlice({
     },
     logOut: (state) => {
       state.isLogged = false;
-      state.userName = '';
+      state.userName = null;
       localStorage.removeItem('userName');
     },
   },
 });
 
-export const { logIn, logOut } = userSlice.actions;
-
-export default userSlice.reducer;
+export const { reducer: userReducer, actions: userActions } = userSlice;

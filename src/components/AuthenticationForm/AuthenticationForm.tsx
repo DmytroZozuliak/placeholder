@@ -4,12 +4,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import styles from './style.module.scss';
 import { Box } from '@mui/system';
 import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FormValues } from '../../interfaces/formInterfaces';
 import { useTypedDispatch } from '../../hooks/redux';
-import { logIn } from '../../store/reducers/userSlice';
+import { userActions } from '../../store/reducers/userSlice';
 import { useTranslation } from 'react-i18next';
-import { openSuccessSnack, openErrorSnack } from '../../store/reducers/snackSlice';
+import { snackActions } from '../../store/reducers/snackSlice';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { RoutePath } from '../../utils/constants/routes';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
@@ -43,12 +43,12 @@ const AuthenticationForm = () => {
 
   const onSubmit: SubmitHandler<FormValues> = ({ username, password }) => {
     if (username !== mockFormData.username || password !== mockFormData.password) {
-      dispatch(openErrorSnack(t('snack_message.failed_user')));
+      dispatch(snackActions.openErrorSnack(t('snack_message.failed_user')));
       return;
     }
 
-    dispatch(logIn({ name: username }));
-    dispatch(openSuccessSnack(t('snack_message.success_user')));
+    dispatch(userActions.logIn({ name: username }));
+    dispatch(snackActions.openSuccessSnack(t('snack_message.success_user')));
     navigate(RoutePath.Profile, { replace: true });
   };
 
@@ -57,7 +57,7 @@ const AuthenticationForm = () => {
       <Avatar alt="auth-logo" color="primary" className={styles.avatar}>
         <LockOutlinedIcon />
       </Avatar>
-      <Typography fontSize={26} variant="h5" className={styles['mr-bot']}>
+      <Typography fontSize={26} variant="h5" mb={5}>
         {t('forms.auth.title_sin')}
       </Typography>
       <Controller
@@ -66,6 +66,7 @@ const AuthenticationForm = () => {
         render={({ field }) => (
           <TextField
             {...field}
+            fullWidth
             className={styles.input}
             classes={{
               root: styles.label,
@@ -82,6 +83,7 @@ const AuthenticationForm = () => {
         render={({ field }) => (
           <TextField
             {...field}
+            fullWidth
             className={styles.input}
             classes={{
               root: styles.label,
@@ -106,7 +108,7 @@ const AuthenticationForm = () => {
           />
         )}
       />
-      <Box className={`${styles.boxWrapper} ${styles.buttonsWrapper}`}>
+      <Box className={styles.buttonsWrapper}>
         <LoadingButton
           type="submit"
           className={`${styles.button} ${styles.override}`}

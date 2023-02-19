@@ -1,11 +1,11 @@
-import { Grid, Input, Stack, Typography } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { Box } from '@mui/system';
+import { Stack, Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import ErrorBoundary from '../../components/ErrorBoundary';
+import { useTypedSelector } from '../../hooks/redux';
 
 const Profile = () => {
   const { t } = useTranslation();
+  const userName = useTypedSelector((state) => state.user.userName);
 
   return (
     <ErrorBoundary text={t('errors.default')}>
@@ -22,7 +22,7 @@ const Profile = () => {
           fontSize={34}
           sx={{ '@media (max-width: 500px)': { fontSize: '26px' } }}
         >
-          Profile
+          {t('profile_page.title', { userName })}
         </Typography>
       </Stack>
     </ErrorBoundary>

@@ -1,19 +1,18 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import userReducer from './reducers/userSlice';
-import settingsSlice from './reducers/settingsSlice';
-import boardSlice from './reducers/boardSlice';
-import snackSlice from './reducers/snackSlice';
+import { userReducer } from './reducers/userSlice';
+import { settingsReducer } from './reducers/settingsSlice';
+import { newsReducer } from './reducers/newsSlice';
+import { snackReducer } from './reducers/snackSlice';
 
 const rootReducer = combineReducers({
   user: userReducer,
-  settings: settingsSlice,
-  board: boardSlice,
-  snack: snackSlice,
+  settings: settingsReducer,
+  news: newsReducer,
+  snack: snackReducer,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (gDM) => gDM(),
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

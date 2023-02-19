@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface ISettings {
+export interface Settings {
   theme: string;
   language: string;
 }
 
-const initialState: ISettings = {
+const initialState: Settings = {
   theme: localStorage.getItem('theme') || 'dark',
   language: localStorage.getItem('i18nextLng') || 'en',
 };
@@ -24,6 +24,4 @@ const settingsSlice = createSlice({
   },
 });
 
-export const { settingsToggleTheme, settingsToggleLanguage } = settingsSlice.actions;
-
-export default settingsSlice.reducer;
+export const { reducer: settingsReducer, actions: settingsActions } = settingsSlice;

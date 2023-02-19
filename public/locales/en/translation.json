@@ -1,7 +1,7 @@
 {
   "language" : {
     "en": "en",
-    "ua": "ua"
+    "ua": "uk"
   },
   "buttons": {
     "submit": "Submit",
@@ -10,26 +10,28 @@
     "news": "News",
     "home": "Home",
     "profile": "Profile",
-    "login": "Log in"
+    "login": "Log in",
+    "more": "download more"
   },
   "errors": {
     "default": "Something went wrong. Try to reload the page",
     "popup": "Sorry, something went wrong, try to re-open me :)"
   },
   "welcome_page": {
-    "about_project": "",
-    "sin_btn": "Sign In",
-    "team": "Our team",
-    "about": "This application is suitable for project planning in any industry, for working with a team of any size. It will help to build and track the work process from start to finish, you can always see at what stage a certain task is. Assign responsible for certain tasks, markers are used for visual convenience, form the structure as you like and change it depending on the needs. This application for creating project management system was created as a part of the React 2022Q1 course from Rolling Scopes School.",
-    "info": {
-      "0": "Team lead. Coordinated the work of the team. Implemented authorization and the task window.",
-      "1": "Developer. Implemented boards page and D'n'D logic for application.",
-      "2": "Developer. Implemented single board page and was responsible for back-end."
-    }
+    "project": "Welcome",
+    "about": "To visit profile page please login as:",
+    "cv": "To learn more about me you can visit my ",
+    "cv_name": "CV"
+  },
+  "profile_page": {
+    "title": "You entered as \"{{ userName }}\""
+  },
+  "news_page": {
+    "input_placeholder": "Search in title..."
   },
   "forms": {
     "auth": {
-      "title_sin": "Sign In",
+      "title_sin": "Log In",
       "username": "username",
       "password": "password",
       "success": "You successfully logged in!",
@@ -45,7 +47,7 @@
   },
   "header": {
     "logOutProfile": "Log out",
-    "signInProfile": "sign in",
+    "signInProfile": "Log in",
     "burgerMenu": "Menu"
   },
   "snack_message": {

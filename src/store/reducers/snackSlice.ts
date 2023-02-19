@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface ISnack {
+export interface Snack {
   message: string;
   isSnackBarOpen: boolean;
   severity: 'error' | 'success';
 }
 
-const initialState: ISnack = {
+const initialState: Snack = {
   message: '',
   isSnackBarOpen: false,
   severity: 'success',
@@ -33,6 +33,4 @@ const snackSlice = createSlice({
   },
 });
 
-export const { openSuccessSnack, openErrorSnack, closeSnack } = snackSlice.actions;
-
-export default snackSlice.reducer;
+export const { reducer: snackReducer, actions: snackActions } = snackSlice;

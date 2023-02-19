@@ -3,7 +3,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/redux';
 import { Switch } from '@mui/material';
-import { settingsToggleTheme } from '../../../../store/reducers/settingsSlice';
+import { settingsActions } from '../../../../store/reducers/settingsSlice';
 import styles from '../style.module.scss';
 
 const ThemeSwitcher = () => {
@@ -16,7 +16,7 @@ const ThemeSwitcher = () => {
       <Switch
         color="info"
         checked={theme === 'dark'}
-        onChange={() => dispatch(settingsToggleTheme())}
+        onChange={() => dispatch(settingsActions.settingsToggleTheme())}
       />
       <DarkModeIcon fontSize="small" />
     </Box>

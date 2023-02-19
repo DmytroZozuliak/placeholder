@@ -3,7 +3,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/redux';
-import { settingsToggleLanguage } from '../../../../store/reducers/settingsSlice';
+import { settingsActions } from '../../../../store/reducers/settingsSlice';
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
@@ -13,7 +13,7 @@ const LanguageSwitch = () => {
 
   const handleToggle = (_: MouseEvent<HTMLElement>, newLang: string) => {
     if (newLang !== null) {
-      dispatch(settingsToggleLanguage(newLang));
+      dispatch(settingsActions.settingsToggleLanguage(newLang));
       i18n.changeLanguage(newLang);
     }
   };

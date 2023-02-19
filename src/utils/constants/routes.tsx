@@ -1,7 +1,7 @@
-import Home from '../../pages/home_page/HomePage';
 import { Navigate } from 'react-router-dom';
 import { IRouterRoutes } from '../../interfaces/baseInterfaces';
-import { SignInPage } from '../../pages/authentication_page';
+import Home from '../../pages/home_page/HomePage';
+import SignInPage from '../../pages/authentication_page';
 import News from '../../pages/news_page';
 import Profile from '../../pages/profile_page';
 
