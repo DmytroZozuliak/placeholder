@@ -10,29 +10,3 @@
   align-items: center;
   width: 100%;
 }
-
-.input {
-  min-height: 80px;
-  margin-bottom: 10px !important;
-
-  & p {
-    text-transform: none;
-  }
-
-  & > div {
-    padding: 0 !important;
-  }
-}
-
-.button {
-  &.override {
-    margin-top: 10px;
-    height: 40px;
-    font-size: 18px;
-    width: 100%;
-  }
-}
-
-.label {
-  text-transform: capitalize;
-}

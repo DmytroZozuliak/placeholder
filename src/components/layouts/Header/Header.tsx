@@ -3,7 +3,6 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LanguageSwitch from './components/LanguageSwitch';
-import styles from './style.module.scss';
 import AuthLogo from './components/AuthLogo';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ThemeSwitcher from './components/ThemeSwitcher';
@@ -27,9 +26,9 @@ const Header = () => {
 
   return (
     <>
-      <AppBar position="fixed" className={styles.color}>
+      <AppBar position="fixed">
         <Container maxWidth="xl">
-          <Toolbar disableGutters className={styles.small}>
+          <Toolbar disableGutters>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, columnGap: '10px' }}>
               <Burger />
 

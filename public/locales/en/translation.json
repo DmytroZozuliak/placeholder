@@ -32,8 +32,8 @@
   "forms": {
     "auth": {
       "title_sin": "Log In",
-      "username": "username",
-      "password": "password",
+      "username": "Username",
+      "password": "Password",
       "success": "You successfully logged in!",
       "username_required": "Username is required",
       "username_letters": "Username should contain only letters and numbers",

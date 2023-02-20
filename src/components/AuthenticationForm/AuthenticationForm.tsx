@@ -1,19 +1,18 @@
-import { Avatar, IconButton, TextField, Typography } from '@mui/material';
-import LoadingButton from '@mui/lab/LoadingButton';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import styles from './style.module.scss';
-import { Box } from '@mui/system';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Avatar, IconButton, TextField, Typography } from '@mui/material';
+import { VisibilityOff, Visibility } from '@mui/icons-material';
+import LoadingButton from '@mui/lab/LoadingButton';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { yupResolver } from '@hookform/resolvers/yup';
+import styles from './style.module.scss';
 import { FormValues } from '../../interfaces/formInterfaces';
 import { useTypedDispatch } from '../../hooks/redux';
 import { userActions } from '../../store/reducers/userSlice';
 import { useTranslation } from 'react-i18next';
 import { snackActions } from '../../store/reducers/snackSlice';
-import { VisibilityOff, Visibility } from '@mui/icons-material';
 import { RoutePath } from '../../utils/constants/routes';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useValidationSchema } from '../../hooks/useValidationSchema';
 import { mockFormData } from '../../utils/constants/auth';
 
@@ -67,10 +66,7 @@ const AuthenticationForm = () => {
           <TextField
             {...field}
             fullWidth
-            className={styles.input}
-            classes={{
-              root: styles.label,
-            }}
+            sx={{ mb: '10px', minHeight: '80px' }}
             label={t('forms.auth.username')}
             error={Boolean(errors.username?.message)}
             helperText={errors.username?.message}
@@ -84,10 +80,7 @@ const AuthenticationForm = () => {
           <TextField
             {...field}
             fullWidth
-            className={styles.input}
-            classes={{
-              root: styles.label,
-            }}
+            sx={{ mb: '10px', minHeight: '80px' }}
             autoComplete="on"
             type={showPassword ? 'text' : 'password'}
             label={t(`forms.auth.password`)}
@@ -108,15 +101,14 @@ const AuthenticationForm = () => {
           />
         )}
       />
-      <Box className={styles.buttonsWrapper}>
-        <LoadingButton
-          type="submit"
-          className={`${styles.button} ${styles.override}`}
-          variant="contained"
-        >
-          {t('buttons.submit')}
-        </LoadingButton>
-      </Box>
+      <LoadingButton
+        type="submit"
+        sx={{ mt: 2, px: 5, fontSize: '18px' }}
+        className={`${styles.button} ${styles.override}`}
+        variant="contained"
+      >
+        {t('buttons.submit')}
+      </LoadingButton>
     </form>
   );
 };
