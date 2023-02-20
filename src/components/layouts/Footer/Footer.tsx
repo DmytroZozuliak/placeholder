@@ -1,8 +1,6 @@
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Link, Stack, Typography } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { developer } from '../../../utils/constants/developer';
-import styles from './style.module.scss';
-import { Box } from '@mui/system';
 
 const Footer = () => {
   const date = new Date();
@@ -12,8 +10,7 @@ const Footer = () => {
     <Container
       maxWidth={false}
       component="footer"
-      className="footer-container"
-      sx={{ padding: '5px 0' }}
+      sx={{ backgroundColor: 'primary.main', paddingY: { xs: 1, md: 2 } }}
     >
       <Container maxWidth="xl">
         <Stack
@@ -23,20 +20,21 @@ const Footer = () => {
           direction={{ xs: 'column', sm: 'row' }}
           spacing={{ xs: 1, md: 2 }}
         >
-          <Box className={styles.links_wrapper}>
-            <a target="_blank" href={developer.github} className={styles.link} rel="noreferrer">
+          <Link href={developer.github} rel="noreferrer" target="_blank" underline="none">
+            <Stack direction="row" spacing={2} alignItems="center">
               <GitHubIcon
                 sx={{
+                  width: '30px',
+                  height: '30px',
                   color: (theme) => theme.typography.body1.color,
                 }}
-                className={styles.git_logo}
               />
-              <Typography fontSize={{ xs: 16, md: 18 }} lineHeight={{ xs: 1.2, md: 1.5 }}>
+              <Typography fontSize={{ xs: 18, md: 20 }} lineHeight={{ xs: 1.2, md: 1.5 }}>
                 {developer.name}
               </Typography>
-            </a>
-          </Box>
-          <Typography fontSize={{ xs: 20, md: 30 }} fontWeight={600} color="inherit">
+            </Stack>
+          </Link>
+          <Typography fontSize={{ xs: 18, md: 20 }} fontWeight={600} color="inherit">
             {currentYear}
           </Typography>
         </Stack>

@@ -45,26 +45,6 @@ export const themeOptionsDark: ThemeOptions = {
     borderRadius: 6,
   },
   components: {
-    MuiMenuItem: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.className === 'color-picker-search' && {
-            '&.Mui-selected': {
-              display: 'none',
-            },
-          }),
-        }),
-      },
-    },
-    MuiContainer: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.className === 'footer-container' && {
-            backgroundColor: primaryDarkColor,
-          }),
-        }),
-      },
-    },
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
@@ -164,26 +144,6 @@ export const themeOptionsLight: ThemeOptions = {
     },
   },
   components: {
-    MuiMenuItem: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.className === 'color-picker-search' && {
-            '&.Mui-selected': {
-              display: 'none',
-            },
-          }),
-        }),
-      },
-    },
-    MuiContainer: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.className === 'footer-container' && {
-            backgroundColor: primaryLightColor,
-          }),
-        }),
-      },
-    },
     MuiAppBar: {
       styleOverrides: {
         colorPrimary: {
