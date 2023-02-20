@@ -6,7 +6,6 @@ import AuthenticationForm from '../../components/AuthenticationForm';
 import ErrorBoundary from '../../components/ErrorBoundary';
 import { useTypedSelector } from '../../hooks/redux';
 import { RoutePath } from '../../utils/constants/routes';
-import styles from './style.module.scss';
 
 const SignInPage = () => {
   const { isLogged } = useTypedSelector((state) => state.user);
@@ -21,7 +20,7 @@ const SignInPage = () => {
 
   return (
     <ErrorBoundary text={t('errors.default')}>
-      <Container maxWidth="sm" className={styles.authContainer}>
+      <Container maxWidth="sm" sx={{ marginTop: 4 }}>
         <AuthenticationForm />
       </Container>
     </ErrorBoundary>
