@@ -32,8 +32,8 @@
   "forms": {
     "auth": {
       "title_sin": "Авторизуватися",
-      "username": "ім'я",
-      "password": "пароль",
+      "username": "Ім'я",
+      "password": "Пароль",
       "success": "Ви успішно ввійшли!",
       "username_required": "Вкажіть ім'я",
       "username_letters": "Ім'я має містити тільки літери та цифри",
