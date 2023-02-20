@@ -23,6 +23,12 @@ const AuthLogo = () => {
     setAnchorElUser(null);
   };
 
+  const handleLogOut = () => {
+    dispatch(userActions.logOut());
+    navigate(RoutePath.Home);
+    handleCloseUserMenu();
+  };
+
   return (
     <Box sx={{ flexGrow: 0 }}>
       <Tooltip title={userName}>
@@ -46,20 +52,9 @@ const AuthLogo = () => {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        <MenuItem
-          onClick={() => {
-            dispatch(userActions.logOut());
-            navigate(RoutePath.Home);
-            handleCloseUserMenu();
-          }}
-        >
+        <MenuItem onClick={handleLogOut}>
           <LogoutIcon fontSize="small" />
-          <Typography
-            sx={{
-              marginLeft: 2,
-            }}
-            textAlign="center"
-          >
+          <Typography marginLeft={2} textAlign="center">
             {t('header.logOutProfile')}
           </Typography>
         </MenuItem>

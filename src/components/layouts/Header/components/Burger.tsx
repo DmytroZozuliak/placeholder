@@ -33,7 +33,7 @@ const Burger = () => {
     setIsOpenDrawer(open);
   };
 
-  const list = () => (
+  const renderList = () => (
     <Box>
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography sx={{ ml: '10px' }}>{t(`header.burgerMenu`)}</Typography>
@@ -59,7 +59,7 @@ const Burger = () => {
         <MenuIcon />
       </IconButton>
       <Drawer anchor="left" open={isOpenDrawer} onClose={toggleDrawer(false)}>
-        {list()}
+        {renderList()}
       </Drawer>
     </>
   );

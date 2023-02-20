@@ -2,12 +2,12 @@ import { AppBar, Box, Button, Container, IconButton, Toolbar } from '@mui/materi
 import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitch from './components/LanguageSwitch';
 import AuthLogo from './components/AuthLogo';
-import { useLocation, useNavigate } from 'react-router-dom';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import Burger from './components/Burger';
-import { useTranslation } from 'react-i18next';
 import { useTypedSelector } from '../../../hooks/redux';
 import { RoutePath } from '../../../utils/constants/routes';
 
