@@ -33,7 +33,7 @@ const Home = () => {
             </Typography>
           </Stack>
           <Box width={{ xs: '100%', md: '700px' }} sx={{ order: { xs: 1, md: 2 } }}>
-            <img style={{ width: '100%' }} src={picture} alt="main picture" />
+            <img style={{ width: '100%' }} src={picture} alt="main_picture" />
           </Box>
         </Stack>
         <Typography mt={3} variant="body1">

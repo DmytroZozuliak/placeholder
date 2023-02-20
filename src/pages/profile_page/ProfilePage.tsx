@@ -16,12 +16,7 @@ const Profile = () => {
         justifyContent="flex-start"
         alignItems="center"
       >
-        <Typography
-          variant="h6"
-          align="center"
-          fontSize={34}
-          sx={{ '@media (max-width: 500px)': { fontSize: '26px' } }}
-        >
+        <Typography variant="h6" align="center" fontSize={{ xs: 26, md: 34 }}>
           {t('profile_page.title', { userName })}
         </Typography>
       </Stack>

@@ -1,11 +1,11 @@
+import { useEffect } from 'react';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
-import { useEffect } from 'react';
+import Root from './pages/Root';
 import Footer from './components/layouts/Footer/';
 import Header from './components/layouts/Header/';
 import Main from './components/layouts/Main/';
 import { useTypedDispatch, useTypedSelector } from './hooks/redux';
-import Root from './pages/Root';
 import { userActions } from './store/reducers/userSlice';
 import { darkTheme, lightTheme } from './theme/theme';
 import { readUser } from './utils/functions';

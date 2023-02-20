@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { HashRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import './index.scss';
-import './utils/i18n';
-import { store } from './store/store';
+import App from './App';
 import Loader from './components/Loader';
+import { store } from './store/store';
+import './utils/i18n';
+import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(

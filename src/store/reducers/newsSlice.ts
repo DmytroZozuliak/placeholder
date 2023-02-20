@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { apiPlaceholder } from '../../api/api';
 import { NewsResponse } from '../../interfaces/apiInterfaces';
+
 export const fetchNews = createAsyncThunk('news/fetchNews', async (page: number, thunkAPI) => {
   try {
     const news = await apiPlaceholder.get<NewsResponse[]>('/posts', {

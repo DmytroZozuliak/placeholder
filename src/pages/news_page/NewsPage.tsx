@@ -63,19 +63,19 @@ const Boards = () => {
         alignItems="center"
       >
         <Input
-          sx={{ paddingLeft: 4, fontSize: '1.2rem' }}
+          sx={{ paddingLeft: 4, fontSize: 24 }}
           placeholder={t('news_page.input_placeholder')}
           value={search}
           onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
         />
-        <Box position="absolute" sx={{ left: 0, top: 8 }}>
-          <SearchIcon fontSize="small" color={focused ? 'primary' : 'inherit'} />
+        <Box position="absolute" sx={{ left: 0, top: 10 }}>
+          <SearchIcon fontSize="medium" color={focused ? 'primary' : 'inherit'} />
         </Box>
       </Stack>
 
-      <Stack spacing={{ xs: 2, md: 3 }} marginY={3}>
+      <Stack spacing={{ xs: 2, md: 3 }} my={4}>
         {renderList()}
       </Stack>
     </ErrorBoundary>
