@@ -37,6 +37,17 @@ const Home = () => {
           </Box>
         </Stack>
         <Typography mt={3} variant="body1">
+          {t('welcome_page.repository')}
+          <Link
+            href={developer.currentTaskRepository}
+            target="_blank"
+            rel="noreferrer"
+            underline="none"
+          >
+            {t('welcome_page.repository_name')}
+          </Link>
+        </Typography>
+        <Typography mt={2} variant="body1">
           {t('welcome_page.cv')}
           <Link href={developer.cv} target="_blank" rel="noreferrer" underline="none">
             {t('welcome_page.cv_name')}
