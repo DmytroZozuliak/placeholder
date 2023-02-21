@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { userStorage } from '../../utils/localStorageModels';
 
 export interface User {
   isLogged: boolean;
@@ -6,7 +7,7 @@ export interface User {
 }
 
 const initialState: User = {
-  isLogged: !!localStorage.getItem('userName'),
+  isLogged: !!userStorage.getItem(),
   userName: null,
 };
 
@@ -17,12 +18,12 @@ const userSlice = createSlice({
     logIn: (state, action: PayloadAction<{ name: string }>) => {
       state.isLogged = true;
       state.userName = action.payload.name;
-      localStorage.setItem('userName', action.payload.name);
+      userStorage.setItem(action.payload.name);
     },
     logOut: (state) => {
       state.isLogged = false;
       state.userName = null;
-      localStorage.removeItem('userName');
+      userStorage.removeItem();
     },
   },
 });

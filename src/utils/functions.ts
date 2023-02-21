@@ -3,8 +3,6 @@ export const stringAvatar = (name: string): string => {
   return second ? `${first[0]}${second[0]}`.toUpperCase() : first[0].toUpperCase();
 };
 
-export const readUser = () => localStorage.getItem('userName');
-
 export const getSubstring = (string: string): string => {
   const stringLength = string.length;
   const lastIndex = 6;

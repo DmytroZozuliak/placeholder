@@ -8,14 +8,14 @@ import Main from './components/layouts/Main/';
 import { useTypedDispatch, useTypedSelector } from './hooks/redux';
 import { userActions } from './store/reducers/userSlice';
 import { darkTheme, lightTheme } from './theme/theme';
-import { readUser } from './utils/functions';
+import { userStorage } from './utils/localStorageModels';
 
 function App() {
   const theme = useTypedSelector((state) => state.settings.theme);
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    const username = readUser();
+    const username = userStorage.getItem();
     username && dispatch(userActions.logIn({ name: username }));
   }, [dispatch]);
 

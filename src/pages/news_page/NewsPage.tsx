@@ -1,6 +1,6 @@
 import { Button, Input, Stack, Typography } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Box } from '@mui/system';
 import { useTranslation } from 'react-i18next';
 import ErrorBoundary from '../../components/ErrorBoundary';
@@ -8,11 +8,12 @@ import NewsCard from '../../components/NewsCard';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { fetchNews, newsActions } from '../../store/reducers/newsSlice';
 import { useDebounceValue } from '../../hooks/useDebounceValue';
+import { searchNewsStorage } from '../../utils/localStorageModels';
 
 const Boards = () => {
   const { news, status, page, isFetched } = useTypedSelector((state) => state.news);
   const dispatch = useTypedDispatch();
-  const [search, setSearch] = useState(() => localStorage.getItem('searchNews') || '');
+  const [search, setSearch] = useState(() => searchNewsStorage.getItem() || '');
   const [focused, setFocused] = useState(false);
   const { t } = useTranslation();
   const debouncedSearch = useDebounceValue(search);
@@ -21,8 +22,10 @@ const Boards = () => {
     return news.filter((news) => news.title.includes(debouncedSearch));
   }, [debouncedSearch, news]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearch(value);
+    searchNewsStorage.setItem(value);
   };
 
   useEffect(() => {
