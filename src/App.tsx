@@ -7,7 +7,7 @@ import Header from './components/layouts/Header/';
 import Main from './components/layouts/Main/';
 import { useTypedDispatch, useTypedSelector } from './hooks/redux';
 import { userActions } from './store/reducers/userSlice';
-import { darkTheme, lightTheme } from './theme/theme';
+import { darkTheme, lightTheme, themeMode } from './theme/theme';
 import { userStorage } from './utils/localStorageModels';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
+    <ThemeProvider theme={theme === themeMode.dark ? darkTheme : lightTheme}>
       <CssBaseline />
       <Header />
       <Main>

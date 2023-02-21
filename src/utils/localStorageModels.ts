@@ -1,4 +1,4 @@
-import { LocalStorage } from './constants/localStorage';
+import { LocalStorage } from './constants/enums';
 
 class Storage {
   private storageItem: LocalStorage;

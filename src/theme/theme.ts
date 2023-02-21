@@ -1,4 +1,14 @@
-import { ThemeOptions, createTheme } from '@mui/material';
+import { ThemeOptions, createTheme, PaletteMode } from '@mui/material';
+
+interface themeModeInterface {
+  dark: PaletteMode;
+  light: PaletteMode;
+}
+
+export const themeMode: themeModeInterface = {
+  dark: 'dark',
+  light: 'light',
+};
 
 const primaryDarkColor = '#689f38';
 const primaryLightColor = '#689f38';
@@ -8,7 +18,7 @@ const lightFontColor = '#030303';
 
 export const themeOptionsDark: ThemeOptions = {
   palette: {
-    mode: 'dark',
+    mode: themeMode.dark,
     primary: {
       main: primaryDarkColor,
       contrastText: darkFontColor,
@@ -107,7 +117,7 @@ export const themeOptionsDark: ThemeOptions = {
 export const themeOptionsLight: ThemeOptions = {
   ...themeOptionsDark,
   palette: {
-    mode: 'light',
+    mode: themeMode.light,
     background: {
       paper: '#e3e3e3',
     },

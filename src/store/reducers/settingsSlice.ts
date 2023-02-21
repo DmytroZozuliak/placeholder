@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { themeMode } from '../../theme/theme';
 import { languageStorage, themeStorage } from '../../utils/localStorageModels';
 
 export interface Settings {
@@ -7,7 +8,7 @@ export interface Settings {
 }
 
 const initialState: Settings = {
-  theme: themeStorage.getItem() || 'dark',
+  theme: themeStorage.getItem() || themeMode.dark,
   language: languageStorage.getItem() || 'en',
 };
 
@@ -16,7 +17,7 @@ const settingsSlice = createSlice({
   initialState,
   reducers: {
     settingsToggleTheme(state) {
-      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      state.theme = state.theme === themeMode.dark ? themeMode.light : themeMode.dark;
       themeStorage.setItem(state.theme);
     },
     settingsToggleLanguage(state, action: PayloadAction<string>) {
