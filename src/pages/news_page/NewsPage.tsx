@@ -7,7 +7,7 @@ import ErrorBoundary from '../../components/ErrorBoundary';
 import NewsCard from '../../components/NewsCard';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/redux';
 import { fetchNews, newsActions } from '../../store/reducers/newsSlice';
-import { useDebounceValue } from '../../hooks/useDebounce';
+import { useDebounceValue } from '../../hooks/useDebounceValue';
 
 const Boards = () => {
   const { news, status, page, isFetched } = useTypedSelector((state) => state.news);
@@ -28,7 +28,7 @@ const Boards = () => {
   useEffect(() => {
     if (!isFetched) {
       dispatch(fetchNews(1));
-      dispatch(newsActions.isFetched());
+      dispatch(newsActions.isFetched(true));
     }
   }, [dispatch, isFetched]);
 

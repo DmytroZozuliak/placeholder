@@ -7,7 +7,7 @@ import { settingsActions } from '../../../../store/reducers/settingsSlice';
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
-  const { language } = useTypedSelector((state) => state.settings);
+  const language = useTypedSelector((state) => state.settings.language);
   const { t } = useTranslation();
   const dispatch = useTypedDispatch();
 

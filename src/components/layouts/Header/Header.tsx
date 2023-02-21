@@ -12,7 +12,7 @@ import { useTypedSelector } from '../../../hooks/redux';
 import { RoutePath } from '../../../utils/constants/routes';
 
 const Header = () => {
-  const { isLogged } = useTypedSelector((state) => state.user);
+  const isLogged = useTypedSelector((state) => state.user.isLogged);
   const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();

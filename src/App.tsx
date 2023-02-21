@@ -11,7 +11,7 @@ import { darkTheme, lightTheme } from './theme/theme';
 import { readUser } from './utils/functions';
 
 function App() {
-  const { theme } = useTypedSelector((state) => state.settings);
+  const theme = useTypedSelector((state) => state.settings.theme);
   const dispatch = useTypedDispatch();
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import { useTypedSelector } from '../../hooks/redux';
 import { RoutePath } from '../../utils/constants/routes';
 
 const SignInPage = () => {
-  const { isLogged } = useTypedSelector((state) => state.user);
+  const isLogged = useTypedSelector((state) => state.user.isLogged);
   const navigate = useNavigate();
   const { t } = useTranslation();
 

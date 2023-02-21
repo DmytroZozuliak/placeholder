@@ -59,8 +59,8 @@ const newsSlice = createSlice({
     addPage(state, action: PayloadAction<number>) {
       state.page = action.payload;
     },
-    isFetched(state) {
-      state.isFetched = true;
+    isFetched(state, action: PayloadAction<boolean>) {
+      state.isFetched = action.payload;
     },
   },
   extraReducers: (builder) =>

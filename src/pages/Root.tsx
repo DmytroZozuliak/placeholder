@@ -3,7 +3,7 @@ import { useTypedSelector } from '../hooks/redux';
 import routes from '../utils/constants/routes';
 
 const Root = () => {
-  const { isLogged } = useTypedSelector((state) => state.user);
+  const isLogged = useTypedSelector((state) => state.user.isLogged);
 
   return (
     <Routes>

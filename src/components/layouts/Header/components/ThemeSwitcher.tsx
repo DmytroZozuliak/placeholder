@@ -5,7 +5,7 @@ import { Stack, Switch } from '@mui/material';
 import { settingsActions } from '../../../../store/reducers/settingsSlice';
 
 const ThemeSwitcher = () => {
-  const { theme } = useTypedSelector((state) => state.settings);
+  const theme = useTypedSelector((state) => state.settings.theme);
   const dispatch = useTypedDispatch();
 
   return (
