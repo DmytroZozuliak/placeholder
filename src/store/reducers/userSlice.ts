@@ -8,7 +8,7 @@ export interface User {
 
 const initialState: User = {
   isLogged: !!userStorage.getItem(),
-  userName: null,
+  userName: userStorage.getItem(),
 };
 
 const userSlice = createSlice({
