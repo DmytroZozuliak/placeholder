@@ -21,7 +21,9 @@
     "project": "Welcome",
     "about": "To visit profile page please login as:",
     "cv": "To learn more about me you can visit my ",
-    "cv_name": "CV"
+    "cv_name": "CV",
+    "repository": "Repository of current work: ",
+    "repository_name": "link"
   },
   "profile_page": {
     "title": "You entered as \"{{ userName }}\""
