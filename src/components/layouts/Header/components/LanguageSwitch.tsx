@@ -1,9 +1,9 @@
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/redux';
 import { settingsActions } from '../../../../store/reducers/settingsSlice';
+import { Language } from '../../../../utils/constants/enums';
 
 const LanguageSwitch = () => {
   const { i18n } = useTranslation();
@@ -11,11 +11,9 @@ const LanguageSwitch = () => {
   const { t } = useTranslation();
   const dispatch = useTypedDispatch();
 
-  const handleToggle = (_: MouseEvent<HTMLElement>, newLang: string) => {
-    if (newLang !== null) {
-      dispatch(settingsActions.settingsToggleLanguage(newLang));
-      i18n.changeLanguage(newLang);
-    }
+  const handleToggle = (_: React.MouseEvent<HTMLElement>, newLang: Language) => {
+    dispatch(settingsActions.settingsToggleLanguage(newLang));
+    i18n.changeLanguage(newLang);
   };
 
   return (
@@ -26,10 +24,10 @@ const LanguageSwitch = () => {
       onChange={handleToggle}
       aria-label="text alignment"
     >
-      <ToggleButton value="en" aria-label="left aligned">
+      <ToggleButton value={Language.En} aria-label="left aligned">
         {t('language.en')}
       </ToggleButton>
-      <ToggleButton value="ua" aria-label="centered">
+      <ToggleButton value={Language.Ua} aria-label="centered">
         {t('language.ua')}
       </ToggleButton>
     </ToggleButtonGroup>

@@ -1,15 +1,17 @@
+import { PaletteMode } from '@mui/material';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { themeMode } from '../../theme/theme';
+import { Language } from '../../utils/constants/enums';
 import { languageStorage, themeStorage } from '../../utils/localStorageModels';
 
 export interface Settings {
-  theme: string;
-  language: string;
+  theme: PaletteMode;
+  language: Language;
 }
 
 const initialState: Settings = {
-  theme: themeStorage.getItem() || themeMode.dark,
-  language: languageStorage.getItem() || 'en',
+  theme: (themeStorage.getItem() as PaletteMode | null) || themeMode.dark,
+  language: (languageStorage.getItem() as Language | null) || Language.En,
 };
 
 const settingsSlice = createSlice({
@@ -20,7 +22,7 @@ const settingsSlice = createSlice({
       state.theme = state.theme === themeMode.dark ? themeMode.light : themeMode.dark;
       themeStorage.setItem(state.theme);
     },
-    settingsToggleLanguage(state, action: PayloadAction<string>) {
+    settingsToggleLanguage(state, action: PayloadAction<Language>) {
       state.language = action.payload;
     },
   },

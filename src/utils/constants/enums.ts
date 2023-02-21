@@ -4,3 +4,8 @@ export enum LocalStorage {
   Theme = 'theme',
   Language = 'i18nextLng',
 }
+
+export enum Language {
+  En = 'en',
+  Ua = 'ua',
+}
