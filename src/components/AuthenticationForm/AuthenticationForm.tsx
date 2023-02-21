@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Avatar, IconButton, TextField, Typography } from '@mui/material';
+import { Avatar, IconButton, Stack, TextField, Typography } from '@mui/material';
 import { VisibilityOff, Visibility } from '@mui/icons-material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { yupResolver } from '@hookform/resolvers/yup';
-import styles from './style.module.scss';
 import { FormValues } from '../../interfaces/formInterfaces';
 import { useTypedDispatch } from '../../hooks/redux';
 import { userActions } from '../../store/reducers/userSlice';
@@ -52,8 +51,17 @@ const AuthenticationForm = () => {
   };
 
   return (
-    <form className={styles.boxWrapper} onSubmit={handleSubmit(onSubmit)}>
-      <Avatar alt="auth-logo" color="primary" className={styles.avatar}>
+    <Stack
+      component="form"
+      justifyContent="space-between"
+      alignItems="center"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <Avatar
+        alt="auth-logo"
+        color="primary"
+        sx={{ backgroundColor: 'rgb(185, 172, 190)', my: '10px' }}
+      >
         <LockOutlinedIcon />
       </Avatar>
       <Typography fontSize={26} variant="h5" mb={5}>
@@ -101,15 +109,10 @@ const AuthenticationForm = () => {
           />
         )}
       />
-      <LoadingButton
-        type="submit"
-        sx={{ mt: 2, px: 5, fontSize: '18px' }}
-        className={`${styles.button} ${styles.override}`}
-        variant="contained"
-      >
+      <LoadingButton type="submit" sx={{ mt: 2, px: 5, fontSize: '18px' }} variant="contained">
         {t('buttons.submit')}
       </LoadingButton>
-    </form>
+    </Stack>
   );
 };
 

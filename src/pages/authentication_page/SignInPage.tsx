@@ -20,7 +20,7 @@ const SignInPage = () => {
 
   return (
     <ErrorBoundary text={t('errors.default')}>
-      <Container maxWidth="sm" sx={{ marginTop: 4 }}>
+      <Container maxWidth="sm" sx={{ marginTop: 5 }}>
         <AuthenticationForm />
       </Container>
     </ErrorBoundary>
